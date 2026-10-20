@@ -1,0 +1,614 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Urban Bites | Modern Food Experience</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #e85d36;
+      --dark: #20211e;
+      --cream: #faf7f0;
+      --muted: #77776f;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 247, 240, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e9e3d8;
+    }
+
+    .nav-content {
+      min-height: 78px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 27px;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links .nav-cta {
+      background: var(--dark);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 30px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 75px 0 85px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: #f7e4d8;
+      color: #a74125;
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      line-height: 1.12;
+    }
+
+    h1 {
+      font-size: clamp(42px, 5.5vw, 69px);
+      letter-spacing: -2px;
+    }
+
+    h1 span {
+      color: var(--primary);
+    }
+
+    .hero-text {
+      margin: 23px 0 30px;
+      max-width: 460px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 8px;
+      font-weight: 700;
+      transition: transform 0.25s, background 0.25s;
+    }
+
+    .btn:hover {
+      background: #c84927;
+      transform: translateY(-3px);
+    }
+
+    .hero-image {
+      position: relative;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      border-radius: 180px 180px 18px 18px;
+      display: block;
+    }
+
+    .image-note {
+      position: absolute;
+      bottom: 22px;
+      left: -25px;
+      background: white;
+      padding: 17px 22px;
+      border-radius: 12px;
+      box-shadow: 0 12px 35px #00000012;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .image-note span {
+      color: var(--primary);
+    }
+
+    /* Features */
+    .features {
+      padding: 30px 0;
+      background: var(--dark);
+      color: white;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      text-align: center;
+    }
+
+    .feature-item strong {
+      display: block;
+      font-size: 17px;
+      margin-bottom: 5px;
+    }
+
+    .feature-item p {
+      font-size: 13px;
+      color: #c4c2ba;
+    }
+
+    /* Menu */
+    .menu {
+      padding: 100px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(32px, 4vw, 46px);
+      margin: 12px 0;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .menu-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      border: 1px solid #eee9df;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 18px 35px #0000000d;
+    }
+
+    .menu-card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .menu-info {
+      padding: 22px;
+    }
+
+    .menu-info h3 {
+      font-size: 19px;
+      margin-bottom: 8px;
+    }
+
+    .menu-info p {
+      font-size: 13px;
+      color: var(--muted);
+      min-height: 42px;
+    }
+
+    .menu-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .price {
+      font-size: 21px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .order-btn {
+      border: none;
+      background: var(--dark);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 7px;
+      cursor: pointer;
+      font: inherit;
+      font-size: 13px;
+    }
+
+    .order-btn:hover {
+      background: var(--primary);
+    }
+
+    /* About */
+    .about {
+      padding: 80px 0;
+      background: #f0e9dd;
+    }
+
+    .about-content {
+      max-width: 700px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .about h2 {
+      font-size: clamp(32px, 4vw, 45px);
+      margin: 15px 0 20px;
+    }
+
+    .about p {
+      color: #68665e;
+      margin-bottom: 25px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 0;
+      background: var(--dark);
+      color: white;
+      text-align: center;
+    }
+
+    footer .logo {
+      margin-bottom: 12px;
+    }
+
+    footer p {
+      color: #c4c2ba;
+      font-size: 13px;
+    }
+
+    .copyright {
+      margin-top: 22px;
+      padding-top: 20px;
+      border-top: 1px solid #41413c;
+    }
+
+    @media (max-width: 768px) {
+      .nav-content {
+        flex-wrap: wrap;
+        padding: 16px 0;
+      }
+
+      .nav-links {
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+      }
+
+      .nav-links .nav-cta {
+        padding: 9px 13px;
+      }
+
+      .hero {
+        padding: 50px 0 65px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .hero-image img {
+        height: 350px;
+        border-radius: 100px 100px 15px 15px;
+      }
+
+      .image-note {
+        left: 10px;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-card img {
+        height: 260px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .menu {
+        padding: 70px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Change the shop name here to demonstrate Git -->
+  <nav>
+    <div class="container nav-content">
+      <a href="#home" class="logo">
+        Urban<span>Bites.</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#menu">Our Menu</a>
+        <a href="#about">Our Story</a>
+        <a href="#contact" class="nav-cta">Visit Us ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+
+      <div>
+        <span class="eyebrow">Good food, good mood</span>
+
+        <h1>
+          Fresh Flavours.<br>
+          <span>Happy Hearts.</span>
+        </h1>
+
+        <p class="hero-text">
+          Discover a little happiness in every bite.
+          Fresh ingredients, bold flavours, and food
+          made with love — just the way it should be.
+        </p>
+
+        <a href="#menu" class="btn">Explore Our Menu ↗</a>
+      </div>
+
+      <div class="hero-image">
+        <img
+          src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=85"
+          alt="Delicious gourmet burger"
+        >
+
+        <div class="image-note">
+          Made fresh daily <span>✦</span>
+          <br>
+          <small>Quality you can taste.</small>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="container feature-grid">
+
+      <div class="feature-item">
+        <strong>🌿 Fresh Ingredients</strong>
+        <p>Carefully selected, every day.</p>
+      </div>
+
+      <div class="feature-item">
+        <strong>👨‍🍳 Made With Love</strong>
+        <p>Crafted fresh when you order.</p>
+      </div>
+
+      <div class="feature-item">
+        <strong>✨ Unforgettable Taste</strong>
+        <p>Little bites, big happiness.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section class="menu" id="menu">
+    <div class="container">
+
+      <div class="section-heading">
+        <span class="eyebrow">The crowd favourites</span>
+        <h2>A Menu Worth Craving</h2>
+        <p>Freshly prepared favourites for every kind of foodie.</p>
+      </div>
+
+      <div class="menu-grid">
+
+        <article class="menu-card">
+          <img
+            src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80"
+            alt="Classic cheeseburger"
+            loading="lazy"
+          >
+
+          <div class="menu-info">
+            <h3>Classic Smash Burger</h3>
+            <p>Juicy grilled patty, melted cheese, and our signature sauce.</p>
+
+            <div class="menu-bottom">
+              <span class="price">₹249</span>
+              <button class="order-btn" data-item="Classic Smash Burger">
+                Order Now +
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <img
+            src="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=700&q=80"
+            alt="Fresh pizza"
+            loading="lazy"
+          >
+
+          <div class="menu-info">
+            <h3>Garden Fresh Pizza</h3>
+            <p>Golden crust, fresh toppings, and delicious melted cheese.</p>
+
+            <div class="menu-bottom">
+              <span class="price">₹329</span>
+              <button class="order-btn" data-item="Garden Fresh Pizza">
+                Order Now +
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <img
+            src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=700&q=80"
+            alt="Italian pasta"
+            loading="lazy"
+          >
+
+          <div class="menu-info">
+            <h3>Creamy Italian Pasta</h3>
+            <p>Rich, creamy sauce tossed with perfectly cooked pasta.</p>
+
+            <div class="menu-bottom">
+              <span class="price">₹279</span>
+              <button class="order-btn" data-item="Creamy Italian Pasta">
+                Order Now +
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="container about-content">
+
+      <span class="eyebrow">Our little story</span>
+
+      <h2>Food Brings People Together.</h2>
+
+      <p>
+        At Urban Bites, we believe great food creates great memories.
+        From our carefully chosen ingredients to every plate we serve,
+        we put passion into the details so you can enjoy the moment.
+      </p>
+
+      <a href="#contact" class="btn">Come Say Hello ↗</a>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="container">
+
+      <div class="logo">Urban<span>Bites.</span></div>
+
+      <p>Good food. Great company. Unforgettable moments.</p>
+      <p>Chennai, Tamil Nadu · Open Daily</p>
+
+      <div class="copyright">
+        <p>
+          © <span id="year"></span> Urban Bites.
+          Crafted with love.
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    // Automatically update the copyright year
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    // Interactive menu buttons
+    document.querySelectorAll(".order-btn").forEach(function(button) {
+      button.addEventListener("click", function() {
+        const itemName = button.dataset.item;
+
+        alert(
+          "Great choice! 🍔\n\n" +
+          itemName +
+          "\n\nThank you for choosing Urban Bites!"
+        );
+      });
+    });
+  </script>
+
+</body>
+</html>
